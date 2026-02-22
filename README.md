@@ -136,12 +136,12 @@ The intelligence of this application is founded upon the well-regarded [PaySim s
 
 The design, data analysis, and software engineering for this system were collaboratively executed by the following individuals:
 
-| Name | Role |
-| :--- | :--- |
-| **P Varshitha** | Team Leader |
-| **G Lokanath Reddy** | Software Engineer |
-| **K Pujith** | Data Scientist & Machine Learning Engineer |
-| **T Sruthi** | Frontend Developer |
+| Name |
+| :--- |
+| **P Varshitha** |
+| **G Lokanath Reddy** |
+| **K Pujith** |
+| **T Sruthi** |
 
 **Academic Institution:** Annamacharya Institute of Technology & Sciences  
 **Registered Team Identification:** LTVIP2026TMIDS41562
