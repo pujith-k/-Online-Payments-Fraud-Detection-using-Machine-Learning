@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Virtual Environment
+.venv/
+venv/
+env/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Generator scripts (not needed for the app)
+generate_graphs.py
+generate_pdf.py
+generate_docx.py
+
+# Documentation source template
+FSD Documentation Format.pdf
+
+# Generated docs images (can be regenerated)
+docs_images/
+
+# Byte-compiled
+*.pkl
+!static/model.pkl
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
