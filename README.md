@@ -1,124 +1,111 @@
-# Online-Payments-Fraud-Detection-with-Machine-Learning
+# Online Payments Fraud Detection with Machine Learning
 
-The introduction of online payment systems has helped a lot in the ease of payments. But, at the same time, it increased in payment frauds. Online payment frauds can happen with anyone using any payment system, especially while making payments using a credit card. That is why detecting online payment fraud is very important for credit card companies to ensure that the customers are not getting charged for the products and services they never paid. 
+> A premium, real-time web application that detects fraudulent online payment transactions using Machine Learning.
 
-## Online Payments Fraud Detection with Machine Learning
-To identify online payment fraud with machine learning, we need to train a machine learning model for classifying fraudulent and non-fraudulent payments. For this, we need a dataset containing information about online payment fraud, so that we can understand what type of transactions lead to fraud. For this task, I collected a dataset from Kaggle, which contains historical information about fraudulent transactions which can be used to detect fraud in online payments. Below are all the columns from the dataset I’m using here:
+![Project Status](https://img.shields.io/badge/Status-Active-brightgreen)
+![Python](https://img.shields.io/badge/Python-3.8+-blue)
+![Flask](https://img.shields.io/badge/Framework-Flask-black)
+![scikit-learn](https://img.shields.io/badge/ML-scikit--learn-orange)
 
-* <font color='DarkOrange'>step</font> : represents a unit of time where 1 step equals 1 hour
-* <font color='Pink'>type</font> : type of online transaction
-* <font color='Orange'>amount</font> : the amount of the transaction
-* <font color='Yellow'>nameOrig</font> : customer starting the transaction
-* <font color='Purple'>oldbalanceOrg</font> : balance before the transaction
-* <font color='Green'>newbalanceOrig</font> : balance after the transaction
-* <font color='Brown'>nameDest</font> : recipient of the transaction
-* <font color='Tomato'>oldbalanceDest</font> : initial balance of recipient before the transaction
-* <font color='DarkKhaki'>newbalanceDest</font> : the new balance of recipient after the transaction
-* <font color='red'>isFraud</font> : fraud transaction
+---
 
-## Online Payments Fraud Detection using Python
+## 📸 Screenshots
 
-importing the necessary Python libraries and the [dataset](https://www.kaggle.com/ealaxi/paysim1/download) we need for this task:
-```
-import pandas as pd   
-import numpy as np   
+### 1. Home Page / Transaction Analysis Form
+*A modern, dark-themed UI with glassmorphism for entering transaction details.*
+![Home Page](screenshots/home_page.png)
 
-import matplotlib.pyplot as plt   
-import seaborn as sns   
-```
-Read and show Dataset 
-```
-data = pd.read_csv(
-    '/home/ryzenrtx/Prince/Projects/Online Payments Fraud Detection with Machine Learning/PS_20174392719_1491204439457_log.csv')
-data.head()
-```
-![data](https://user-images.githubusercontent.com/85225054/232678285-25faa09e-6200-4b10-a1c6-3caef70d50ed.png)
+### 2. Fraud Prediction Result
+*Real-time risk assessment and clear indicator when a transaction is flagged as fraudulent.*
+![Prediction Result](screenshots/prediction_result.png)
 
-Now, let’s have a look at whether this dataset has any null values or not:
-```
-print(data.isnull().sum()) 
+---
 
-```
-![null](https://user-images.githubusercontent.com/85225054/232678804-df543314-f3eb-4166-98ec-ac4295f58317.png)
+## 📖 Project Overview
 
-So this dataset does not have any null values. Before moving forward, now, let’s have a look at the type of transaction mentioned in the dataset:
+The introduction of online payment systems has revolutionized financial transactions, making them faster and easier. However, this has also led to a significant increase in payment fraud. This project addresses the challenge by providing a **Machine Learning-powered web application** that classifies online transactions as fraudulent or legitimate in real-time.
 
-![explore](https://user-images.githubusercontent.com/85225054/232678894-3bd7a0df-1737-49f8-a810-092fee0e9d73.png)
+### Key Features
+- **Real-Time Fraud Prediction**: Enter transaction details and receive instant fraud/no-fraud classification within milliseconds.
+- **Trained Machine Learning Model**: Uses a Decision Tree Classifier trained on the PaySim synthetic financial dataset, achieving **97.6% accuracy**.
+- **Premium User Interface**: Dark-themed UI with glassmorphism effects, dynamic CSS animations, and fully responsive design.
+- **Comprehensive Analysis**: Supports 5 transaction types (Cash Out, Payment, Cash In, Transfer, Debit).
 
+---
 
-```
-type = data["type"].value_counts()
-transactions = type.index
-quantity = type.values
+## 🛠️ Technologies Used
 
-import plotly.express as px
-figure = px.pie(data, 
-             values=quantity, 
-             names=transactions,hole = 0.5, 
-             title="Distribution of Transaction Type")
-figure.show()
-```
-![graph](https://user-images.githubusercontent.com/85225054/232679154-bdae9007-9576-45cf-bfe0-c069e8dd8dbb.png)
+| Component | Technology | Purpose |
+| :--- | :--- | :--- |
+| **Backend** | Python Flask | Web server and API routing |
+| **Machine Learning** | Scikit-Learn | Decision Tree model training and inference |
+| **Data Processing** | NumPy & Pandas | Data manipulation and analysis |
+| **Frontend** | HTML5 / CSS3 / JavaScript | Responsive user interface with modern styling |
+| **Model Persistence** | Pickle | Saving and loading the pre-trained ML model |
 
-Now let’s have a look at the correlation between the features of the data with the isFraud column:
-```
-# Checking correlation
-correlation = data.corr()
-sns.heatmap(correlation, annot=True)    
+---
 
-```
-![corr](https://user-images.githubusercontent.com/85225054/232679420-eed1f10a-a597-46e8-bc4e-3f131c842042.png)
+## 🗂️ Project Structure
 
-Now let’s transform the categorical features into numerical. Here I will also transform the values of the isFraud column into No Fraud and Fraud labels to have a better understanding of the output:
+The repository is organized into clearly defined folders for ease of use:
 
-```
-data["type"] = data["type"].map({"CASH_OUT": 1, "PAYMENT": 2, 
-                                 "CASH_IN": 3, "TRANSFER": 4,
-                                 "DEBIT": 5})
-data["isFraud"] = data["isFraud"].map({0: "No Fraud", 1: "Fraud"})
-
+```text
+📁 Document/
+   ├── Project_Documentation.pdf    # Full documentation (architecture, EDA, API, etc.)
+📁 Project Files/
+   ├── app.py                       # Main Flask server
+   ├── retrain_model.py             # Script to regenerate the trained model
+   ├── main.ipynb                   # Jupyter notebook with EDA and training pipeline
+   ├── static/                      # CSS styling, images, and model.pkl
+   └── templates/                   # HTML templates (index.html)
+📁 Video Demo/
+   └── video demo.mov               # Video demonstration of the working application
+📄 README.md                        # This file
+📄 .gitignore                       # Git ignore rules
 ```
 
-### Online Payments Fraud Detection Model
+---
 
-Now let’s train a classification model to classify fraud and non-fraud transactions. Before training the model, I will split the data into training and test sets:
+## 🚀 How to Run Locally
 
-```
-# splitting the data
-from sklearn.model_selection import train_test_split
-x = np.array(data[["type", "amount", "oldbalanceOrg", "newbalanceOrig"]])
-y = np.array(data[["isFraud"]])
-
-```
-
-Now let’s train the online payments fraud detection model:
-
-```
-# training a machine learning model
-from sklearn.tree import DecisionTreeClassifier
-xtrain, xtest, ytrain, ytest = train_test_split(
-    x, y, test_size=0.10, random_state=42)
-model = DecisionTreeClassifier()
-model.fit(xtrain, ytrain)
-print(model.score(xtest, ytest))
+### 1. Clone the Repository
+```bash
+git clone https://github.com/pujith-k/-Online-Payments-Fraud-Detection-using-Machine-Learning.git
+cd -Online-Payments-Fraud-Detection-using-Machine-Learning
+cd "Project Files"
 ```
 
-Now let’s classify whether a transaction is a fraud or not by feeding about a transaction into the model:
+### 2. Install Dependencies
+Make sure you have Python 3.8+ installed. It is recommended to use a virtual environment.
+```bash
+pip install flask scikit-learn numpy pandas
 ```
-# prediction
-#features = [type, amount, oldbalanceOrg, newbalanceOrig]
-features = np.array([[4, 9000.60, 9000.60, 0.0]])
-print(model.predict(features))
 
+### 3. Run the Flask Application
+```bash
+python3 app.py
 ```
-Dump Model with the help of pickle 
-```
-import pickle
-pickle.dump(mode|l, open("model.pkl", "wb"))
+The server will start on `http://127.0.0.1:5000/`. Open this link in your web browser.
 
-```
-loading the model 
-```                            
-model = pickle.load(open("model.pkl", "rb"))
-```
-Refrence : The code in this project was inspired by the [article](https://thecleverprogrammer.com/author/amankharwal/.) Online Payments Fraud Detection with Machine Learning.
+---
+
+## 📊 Dataset Information
+
+This project is built using the [PaySim synthetic financial dataset](https://www.kaggle.com/ealaxi/paysim1) from Kaggle.
+- **Total records:** 6,362,620 transactions.
+- **Imbalance:** Highly imbalanced — only 0.13% of transactions are fraudulent.
+- **Features Used:** `type`, `amount`, `oldbalanceOrg`, `newbalanceOrig`.
+
+---
+
+## 👥 Meet the Team
+
+| Name | Role |
+| :--- | :--- |
+| **P Varshitha** | Team Leader |
+| **G Lokanath Reddy** | Team Member |
+| **K Pujith** | Team Member |
+| **T Sruthi** | Team Member |
+
+**College:** Annamacharya Institute of Technology & Sciences  
+**Team ID:** LTVIP2026TMIDS41562
